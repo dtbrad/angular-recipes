@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'active_model_serializers'
+gem 'angular-rails-templates'
 
 group :development, :test do
   gem 'byebug', platform: :mri
