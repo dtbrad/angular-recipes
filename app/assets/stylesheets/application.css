@@ -13,4 +13,10 @@
  *= require_tree .
  *= require_self
  *= require 'bootstrap-sass'
+  *= require ng-sortable
  */
+
+ ol li.list-group-item {
+  list-style: decimal inside;
+  display: list-item;
+}
