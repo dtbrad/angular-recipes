@@ -2,6 +2,10 @@ DataService.$inject = ["$http"];
 
 function DataService($http) {
 
+  this.getIngredients = function() {
+    return $http.get('/ingredients.json');
+  }
+
   this.getRecipes = function() {
     return $http.get('/recipes.json');
   }

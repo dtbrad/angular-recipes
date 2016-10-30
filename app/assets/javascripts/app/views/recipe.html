@@ -1,4 +1,9 @@
 <h4> Recipe: {{ ctrl.recipe.title }} </h4>
+<p> new recipe: {{ ctrl.dan }} </p>
+
+<select ng-model="selectedIngredient" ng-options='x.name for x in ctrl.ingredients'>
+        <option value="">Select Ingredient</option>
+</select>
 
 <div ng-repeat="ingredient in ctrl.recipe.recipe_ingredients">
   <p> {{ ingredient.name }}, {{ingredient.quantity_prep}}</p>

@@ -10,6 +10,19 @@ angular
       url:'welcome',
       templateUrl: 'app/views/welcome.html'
     })
+    .state('home.newRecipe', {
+      url:'recipes/new',
+      controller: 'RecipeController as ctrl',
+      templateUrl: 'app/views/recipe.html',
+      resolve: {
+        ingredients: ["DataService", function (DataService) {
+          return DataService.getIngredients();
+        }],
+        recipe: ["$stateParams", "DataService", function ($stateParams, DataService) {
+          return ""
+        }]
+      }
+    })
     .state('home.recipes', {
       url:'recipes',
       controller: 'RecipesController as ctrl',
@@ -25,6 +38,9 @@ angular
       controller: 'RecipeController as ctrl',
       templateUrl: 'app/views/recipe.html',
       resolve: {
+        ingredients: ["DataService", function (DataService) {
+          return DataService.getIngredients();
+        }],
         recipe: ["$stateParams", "DataService", function ($stateParams, DataService) {
           return DataService.getRecipe($stateParams.id);
         }]
