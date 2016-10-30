@@ -1,0 +1,15 @@
+<h4 class="text-center"> Recipe Index </h4>
+</br>
+
+<div class="list-group-item" ng-show="ctrl.recipes.length > 0">
+  <input type="text" class="form-control" placeholder="search" ng-model="ctrl.search">
+</div>
+
+<h5 ng-show="ctrl.recipes.length == 0" class="text-center">There are no recipes in the database</h5>
+<br>
+
+<div ng-repeat="recipe in ctrl.recipes | filter: ctrl.search">
+  <a ui-sref="home.recipe({id: recipe.id})" class="list-group-item">
+    {{recipe.title}}
+  </a>
+</div>
