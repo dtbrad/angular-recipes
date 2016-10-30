@@ -1,14 +1,54 @@
 <h4> Recipe: {{ ctrl.recipe.title }} </h4>
-<p> new recipe: {{ ctrl.dan }} </p>
 
-<select ng-model="selectedIngredient" ng-options='x.name for x in ctrl.ingredients'>
+<div ng-show="!ctrl.recipe.id">
+
+  <form name="recipeForm" ng-submit="ctrl.submit()">
+
+    <div ng-repeat="ingredient in ctrl.recipe.recipe_ingredients">
+      <select ng-model="selectedIngredient" ng-options='x.name for x in ctrl.ingredients'>
         <option value="">Select Ingredient</option>
-</select>
+      </select>
 
-<div ng-repeat="ingredient in ctrl.recipe.recipe_ingredients">
-  <p> {{ ingredient.name }}, {{ingredient.quantity_prep}}</p>
+      <input  class="form-control"
+              name="ingredientName"
+              ng-model="ingredient.name"
+              placeholder="New Ingredient">
+
+      <input  class="form-control"
+              name="ingredientQuantity"
+              ng-model="ingredient.quantity_prep"
+              placeholder="Quantity/Prep">
+      <button type="button" ng-click="ctrl.addIng()">
+        Add Another ingredient
+      </button>
+    </div>
+    <br>
+
+    <div ng-repeat="direction in ctrl.recipe.directions">
+      <textarea class="form-control"
+                name="direction"
+                ng-model="direction.content"
+                placeholder="enter single step">
+      </textarea>
+      <button type="button" ng-click="ctrl.addStep()">
+        Add Another step
+      </button>
+    </div>
+  </br>
+    <input class="btn btn-primary"
+           type="submit"
+           value="submit">
+  </form>
 </div>
 
-<div ng-repeat="direction in ctrl.recipe.directions">
-  <p> {{ direction.step }}. {{direction.content}}</p>
+
+
+<div ng-show="ctrl.recipe.id">
+  <div ng-repeat="ingredient in ctrl.recipe.recipe_ingredients">
+    <p> {{ ingredient.name }}, {{ingredient.quantity_prep}}</p>
+  </div>
+
+  <div ng-repeat="direction in ctrl.recipe.directions">
+    <p> {{ direction.step }}. {{direction.content}}</p>
+  </div>
 </div>

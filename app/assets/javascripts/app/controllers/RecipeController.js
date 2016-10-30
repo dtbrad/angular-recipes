@@ -1,7 +1,7 @@
 RecipeController.$inject = ["$state", "$stateParams", "DataService", "ingredients", "recipe"];
 function RecipeController($state, $stateParams, DataService, ingredients, recipe) {
 
-  var ctrl = this
+  ctrl = this
   ctrl.ingredients = ingredients.data
 
   if ($stateParams.id)
@@ -12,11 +12,23 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
     {
       ctrl.recipe = {
                     title: "",
-                    directions: [{content: ""}],
-                    recipe_ingredients: [{ingredient_name: "", quantity_prep: ""}]
+                    directions: [{place: 1, content: ""}],
+                    recipe_ingredients: [{place: 1, ingredient_name: "", quantity_prep: ""}]
                   }
-      ctrl.dan = "new recipe!"
     }
+
+  ctrl.addStep = function(){
+    var index = ctrl.recipe.directions.length+1
+    ctrl.recipe.directions.push({place: index, content: ""})
+  }
+
+  ctrl.addIng = function(){
+    var index = ctrl.recipe.recipe_ingredients.length+1
+    ctrl.recipe.recipe_ingredients.push({place: index, ingredient_name: "", quantity_prep: ""})
+  }
+
+  ctrl.submit = function(){
+  }
 
 }
 angular
