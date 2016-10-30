@@ -6,11 +6,16 @@
 
     <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.recipe_ingredients">
       <div data-ng-repeat="ingredient in ctrl.recipe.recipe_ingredients | orderBy:ingredient.place" data-as-sortable-item>
-        <select ng-model="selectedIngredient" ng-options='x.name for x in ctrl.ingredients'>
+        <select class="form-control"
+                name="ingredientSelect"
+                ng-model="selectedIngredient"
+                ng-options='x.name for x in ctrl.ingredients'
+                ng-change="ctrl.setIngredient(selectedIngredient, ingredient)">
           <option value="">Select Ingredient</option>
         </select>
 
         <input  class="form-control"
+                ng-show="!selectedIngredient"
                 name="ingredientName"
                 ng-model="ingredient.name"
                 placeholder="New Ingredient">

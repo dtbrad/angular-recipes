@@ -17,6 +17,13 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
                   }
     }
 
+  ctrl.setIngredient = function(selectedValue, ingredientEntry){
+    if (selectedValue)
+    { ingredientEntry.ingredient_name = selectedValue.name }
+    else
+    { ingredientEntry.ingredient_name = "" }
+  }
+
   ctrl.addStep = function(){
     var index = ctrl.recipe.directions.length+1
     ctrl.recipe.directions.push({place: index, content: ""})
