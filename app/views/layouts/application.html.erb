@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecipeBuilder</title>
+    <title>Recipes</title>
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body ng-app='app'>
+    <ui-view></ui-view>
   </body>
+
 </html>

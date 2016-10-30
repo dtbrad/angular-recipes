@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Angular Recipes</a>
+			</div>
+
+      <div class="collapse navbar-collapse" ng-class="{collapse: isCollapsed}" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" ui-sref="home.welcome" ui-sref-active="active">About <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <ui-view></ui-view>
+  </div>
+</div>
