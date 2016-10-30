@@ -1,0 +1,9 @@
+<h4> Recipe: {{ ctrl.recipe.title }} </h4>
+
+<div ng-repeat="ingredient in ctrl.recipe.recipe_ingredients">
+  <p> {{ ingredient.name }}, {{ingredient.quantity_prep}}</p>
+</div>
+
+<div ng-repeat="direction in ctrl.recipe.directions">
+  <p> {{ direction.step }}. {{direction.content}}</p>
+</div>

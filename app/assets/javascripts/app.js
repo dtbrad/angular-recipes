@@ -20,5 +20,15 @@ angular
         }]
       }
     })
+    .state('home.recipe', {
+      url:'recipes/:id',
+      controller: 'RecipeController as ctrl',
+      templateUrl: 'app/views/recipe.html',
+      resolve: {
+        recipe: ["$stateParams", "DataService", function ($stateParams, DataService) {
+          return DataService.getRecipe($stateParams.id);
+        }]
+      }
+    })
     $urlRouterProvider.otherwise('welcome');
 }])

@@ -1,7 +1,7 @@
 class RecipeIngredientSerializer < ActiveModel::Serializer
-  attributes :id, :quantity_prep, :ingredient_name
+  attributes :id, :quantity_prep, :name
 
-  def ingredient_name
+  def name
     @object.ingredient.name
   end
 end

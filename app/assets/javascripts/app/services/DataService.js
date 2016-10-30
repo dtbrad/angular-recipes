@@ -6,6 +6,10 @@ function DataService($http) {
     return $http.get('/recipes.json');
   }
 
+  this.getRecipe = function(id) {
+    return $http.get('/recipes/' + id +'.json');
+  }
+
 }
 
 angular
