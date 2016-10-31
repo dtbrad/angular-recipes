@@ -1,5 +1,5 @@
 angular
-.module('app', ['as.sortable', 'ui.router', 'templates'])
+.module('app', ['as.sortable', 'ui.router', 'templates', 'ngMessages'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {

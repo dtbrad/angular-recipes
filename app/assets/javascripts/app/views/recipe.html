@@ -10,7 +10,13 @@
             type="text"
             name="recipeTitle"
             ng-model="ctrl.recipe.title"
-            placeholder="Enter a Recipe Title">
+            placeholder="Enter a Recipe Title"
+            required>
+
+    <div style="color:red" ng-messages="recipeForm.recipeTitle.$error" ng-if="recipeForm.recipeTitle.$touched || recipeForm.$submitted">
+      <div ng-message="required">Recipe requires a title</div>
+    </div>
+
   </div>
 
   </br>
@@ -41,12 +47,23 @@
                        ng-show="!selectedIngredient"
                        name="ingredientName"
                        ng-model="ingredient.name"
-                       placeholder="New Ingredient">
+                       placeholder="New Ingredient"
+                       required>
 
                 <input class="form-control"
                        name="ingredientQuantity"
                        ng-model="ingredient.quantity_prep"
-                       placeholder="Quantity/Prep">
+                       placeholder="Quantity/Prep"
+                       required>
+              </div>
+
+              <div class="form-group" style="color:red">
+                <div ng-messages="ingredientForm.ingredientName.$error">
+                  <div ng-message="required" ng-if="ingredientForm.ingredientName.$touched ||ingredientForm.$$parentForm.$submitted" > This ingredient entry lacks a name </div>
+                </div>
+                <div ng-messages="ingredientForm.ingredientQuantity.$error">
+                  <div ng-message="required" ng-if="ingredientForm.ingredientQuantity.$touched || ingredientForm.$$parentForm.$submitted"> This ingredient entry lacks a quantity </div>
+                </div>
               </div>
 
             </div>
@@ -81,9 +98,15 @@
                 <textarea class="form-control"
                           name="direction"
                           ng-model="direction.content"
-                          placeholder="enter single step">
+                          placeholder="enter single step"
+                          required>
                 </textarea>
               </div>
+
+              <div class="form-group" style="color:red" ng-messages="directionForm.direction.$error">
+                <div ng-message="required" ng-show="!ctrl.transformed" ng-if="directionForm.direction.$touched || directionForm.$$parentForm.$submitted"> This direction text box is blank </div>
+              </div>
+
             </div>
           </ng-form>
         </div>
