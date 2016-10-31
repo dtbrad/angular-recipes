@@ -22,6 +22,10 @@ function DataService($http) {
     return $http.patch('/recipes/' + recipe.id, {recipe: recipe} )
   }
 
+  this.deleteRecipe = function(id) {
+    return $http.delete('/recipes/' + id);
+  }
+
 }
 
 angular

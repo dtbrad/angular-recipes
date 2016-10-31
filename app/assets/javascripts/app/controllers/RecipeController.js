@@ -71,6 +71,16 @@ function RecipeController(FlashService, $state, $stateParams, DataService, ingre
     }
   };
 
+  ctrl.deleteRecipe = function(){
+    if (confirm('Are you sure?'))
+    {
+      DataService.deleteRecipe(ctrl.recipe.id)
+      .then(function(result){
+        $state.go('home.recipes');
+        FlashService.flashDelete();
+      })
+    }
+  }
 
 }
 angular
