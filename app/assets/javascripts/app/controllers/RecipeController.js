@@ -1,5 +1,5 @@
-RecipeController.$inject = ["$state", "$stateParams", "DataService", "ingredients", "recipe"];
-function RecipeController($state, $stateParams, DataService, ingredients, recipe) {
+RecipeController.$inject = ["FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
+function RecipeController(FlashService, $state, $stateParams, DataService, ingredients, recipe) {
 
   ctrl = this
   ctrl.ingredients = ingredients.data
@@ -59,15 +59,18 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
         DataService.postRecipe(ctrl.recipe)
         .then(function(result){
           $state.go('home.recipe', {id: result.data.id});
+          FlashService.flashCreate();
         });
       }
     else {
       DataService.updateRecipe(ctrl.recipe)
       .then(function(result){
         $state.go($state.$current, null, { reload: true });
+        FlashService.flashUpdate();
       });
     }
   };
+
 
 }
 angular
