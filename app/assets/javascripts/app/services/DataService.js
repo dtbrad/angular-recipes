@@ -14,6 +14,10 @@ function DataService($http) {
     return $http.get('/recipes/' + id +'.json');
   }
 
+  this.postRecipe = function(recipe) {
+    return $http.post('/recipes', {recipe: recipe})
+  }
+
 }
 
 angular

@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  
+
   def index
     @recipes = Recipe.all
     render json: @recipes
@@ -9,5 +9,16 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     render json: @recipe
   end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.save
+    render json: @recipe, status: 201
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:title, ingredients_attributes:
+    [:place, :name, :quantity_prep], directions_attributes: [:place, :content])
+end
 
 end

@@ -4,6 +4,13 @@
 
   <form name="recipeForm" ng-submit="ctrl.submit()">
 
+    <label>Title</label>
+    <input  class="form-control"
+            type="text"
+            name="recipeTitle"
+            ng-model="ctrl.recipe.title"
+            placeholder="Enter a Recipe Title">
+
     <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.recipe_ingredients">
       <div data-ng-repeat="ingredient in ctrl.recipe.recipe_ingredients | orderBy:ingredient.place" data-as-sortable-item>
         <select class="form-control"
@@ -62,6 +69,7 @@
            type="submit"
            value="submit">
   </form>
+</div>
 </div>
 
 
