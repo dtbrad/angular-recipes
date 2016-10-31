@@ -7,6 +7,7 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
   if ($stateParams.id)
     {
       ctrl.recipe = recipe.data
+      ctrl.display = true
     }
   else
     {
