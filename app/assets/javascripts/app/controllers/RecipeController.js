@@ -20,9 +20,9 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
 
   ctrl.setIngredient = function(selectedValue, ingredientEntry){
     if (selectedValue)
-    { ingredientEntry.ingredient_name = selectedValue.name }
+    { ingredientEntry.name = selectedValue.name }
     else
-    { ingredientEntry.ingredient_name = "" }
+    { ingredientEntry.name = "" }
   }
 
   ctrl.addStep = function(){

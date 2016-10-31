@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   has_many :directions, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
+  validates :title, uniqueness: true
 
   def ingredients_attributes=(attributes)
     attributes.each do |recipe_ingredients_hash|
