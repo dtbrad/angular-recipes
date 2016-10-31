@@ -54,11 +54,20 @@ function RecipeController($state, $stateParams, DataService, ingredients, recipe
     ctrl.recipe.directions_attributes = ctrl.recipe.directions
     delete ctrl.recipe.directions
     delete ctrl.recipe.recipe_ingredients
-    DataService.postRecipe(ctrl.recipe)
-    .then(function(result){
-      $state.go('home.recipe', {id: result.data.id});
-    })
-  }
+
+    if (!ctrl.recipe.id) {
+        DataService.postRecipe(ctrl.recipe)
+        .then(function(result){
+          $state.go('home.recipe', {id: result.data.id});
+        });
+      }
+    else {
+      DataService.updateRecipe(ctrl.recipe)
+      .then(function(result){
+        $state.go($state.$current, null, { reload: true });
+      });
+    }
+  };
 
 }
 angular

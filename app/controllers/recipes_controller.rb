@@ -16,9 +16,16 @@ class RecipesController < ApplicationController
     render json: @recipe, status: 201
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(recipe_params)
+    @recipe.save
+    render json: @recipe, status: 201
+  end
+
   def recipe_params
     params.require(:recipe).permit(:title, ingredients_attributes:
     [:place, :name, :quantity_prep], directions_attributes: [:place, :content])
-end
+  end
 
 end

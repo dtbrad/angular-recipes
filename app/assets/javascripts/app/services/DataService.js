@@ -18,6 +18,10 @@ function DataService($http) {
     return $http.post('/recipes', {recipe: recipe})
   }
 
+  this.updateRecipe = function(recipe) {
+    return $http.patch('/recipes/' + recipe.id, {recipe: recipe} )
+  }
+
 }
 
 angular
