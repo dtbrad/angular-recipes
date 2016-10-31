@@ -1,7 +1,7 @@
 RecipeController.$inject = ["FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
 function RecipeController(FlashService, $state, $stateParams, DataService, ingredients, recipe) {
 
-  ctrl = this
+  var ctrl = this
   ctrl.ingredients = ingredients.data
 
   if ($stateParams.id)
