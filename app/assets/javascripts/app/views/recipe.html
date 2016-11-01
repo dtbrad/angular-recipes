@@ -136,8 +136,7 @@
             class="btn btn-primary"
             type="submit"
             value="submit">
+    <button type="button" ng-show="ctrl.recipe.id && ctrl.display" ng-click="ctrl.display=false" class="btn btn-secondary">Edit</button>
+    <button type="button" ng-show="ctrl.recipe.id" ng-click="ctrl.deleteRecipe()" class="btn btn-danger">Delete</button>
   </div>
 </form>
-
-<button type="button" ng-show="ctrl.recipe.id && ctrl.display" ng-click="ctrl.display=false" class="btn btn-secondary">Edit</button>
-<button type="button" ng-show="ctrl.recipe.id" ng-click="ctrl.deleteRecipe()" class="btn btn-danger">Delete</button>
