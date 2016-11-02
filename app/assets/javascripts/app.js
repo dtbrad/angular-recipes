@@ -1,5 +1,5 @@
 angular
-.module('app', ['ngFlash', 'as.sortable', 'ui.router', 'templates', 'ngMessages'])
+.module('app', ['ngFlash', 'as.sortable', 'ui.router', 'templates', 'ngMessages', 'Devise'])
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {

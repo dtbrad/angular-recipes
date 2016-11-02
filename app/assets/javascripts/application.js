@@ -1,6 +1,7 @@
 //= require jquery
 //= rquire bootstrap-sass
 //= require angular
+//= require AngularDevise
 //= require angular-flash-alert
 //= require angular-ui-router
 //= require angular-messages
