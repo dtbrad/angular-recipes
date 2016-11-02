@@ -23,8 +23,8 @@
   </br>
 
   <label>Ingredients</label>
-  <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.recipe_ingredients">
-    <li class="list-group-item" data-ng-repeat="ingredient in ctrl.recipe.recipe_ingredients | orderBy:ingredient.place" data-as-sortable-item>
+  <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.ingredients_attributes">
+    <li class="list-group-item" data-ng-repeat="ingredient in ctrl.recipe.ingredients_attributes | orderBy:ingredient.place" data-as-sortable-item>
       <div>
 
         <div>
@@ -77,9 +77,9 @@
 
         <div ng-hide="ctrl.display">
           <div>
-            <button type="button" ng-show="ctrl.recipe.recipe_ingredients.length > 1" class="btn btn-danger btn-xs" ng-click="ctrl.removeEntry(ingredient, ctrl.recipe.recipe_ingredients)">remove</button>
-            <button type="button" ng-show="ctrl.recipe.recipe_ingredients.length > 1" class="btn btn-info btn-xs" data-as-sortable-item-handle>drag me</button>
-            <button type="button" ng-show="ctrl.recipe.recipe_ingredients.indexOf(ingredient) == (ctrl.recipe.recipe_ingredients.length - 1)" ng-click="ctrl.addIng()"class="btn btn-success btn-xs">add more </button>
+            <button type="button" ng-show="ctrl.recipe.ingredients_attributes.length > 1" class="btn btn-danger btn-xs" ng-click="ctrl.removeEntry(ingredient, ctrl.recipe.ingredients_attributes)">remove</button>
+            <button type="button" ng-show="ctrl.recipe.ingredients_attributes.length > 1" class="btn btn-info btn-xs" data-as-sortable-item-handle>drag me</button>
+            <button type="button" ng-show="ctrl.recipe.ingredients_attributes.indexOf(ingredient) == (ctrl.recipe.ingredients_attributes.length - 1)" ng-click="ctrl.addIng()"class="btn btn-success btn-xs">add more </button>
 
           </div>
         </div>
@@ -91,13 +91,13 @@
   </br>
 
   <label>Directions</label>
-  <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.directions">
-    <li class="list-group-item" data-ng-repeat="direction in ctrl.recipe.directions | orderBy:direction.place" data-as-sortable-item>
+  <div data-as-sortable="ctrl.dragControlListeners" data-ng-model="ctrl.recipe.directions_attributes">
+    <li class="list-group-item" data-ng-repeat="direction in ctrl.recipe.directions_attributes | orderBy:direction.place" data-as-sortable-item>
       <div class="row">
         <div class="col-md-6">
           <ng-form name="directionForm">
             <div ng-show="ctrl.display">
-              {{ ctrl.recipe.directions.indexOf(direction) + 1}}. {{ direction.content }}
+              {{ ctrl.recipe.directions_attributes.indexOf(direction) + 1}}. {{ direction.content }}
             </div>
             <div ng-hide="ctrl.display">
               <div class="form-inline">
@@ -119,9 +119,9 @@
 
         <div class="col-md-6">
           <div class="pull-right" ng-hide="ctrl.display">
-            <button type="button" ng-show="ctrl.recipe.directions.indexOf(direction) == (ctrl.recipe.directions.length - 1)" ng-click="ctrl.addStep()"class="btn btn-success btn-xs">add more </button>
-            <button type="button" ng-show="ctrl.recipe.directions.length > 1" class="btn btn-danger btn-xs" ng-click="ctrl.removeEntry(direction, ctrl.recipe.directions)">remove</button>
-            <button type="button" ng-show="ctrl.recipe.directions.length > 1" class="btn btn-info btn-xs" data-as-sortable-item-handle>drag me</button>
+            <button type="button" ng-show="ctrl.recipe.directions_attributes.indexOf(direction) == (ctrl.recipe.directions_attributes.length - 1)" ng-click="ctrl.addStep()"class="btn btn-success btn-xs">add more </button>
+            <button type="button" ng-show="ctrl.recipe.directions_attributes.length > 1" class="btn btn-danger btn-xs" ng-click="ctrl.removeEntry(direction, ctrl.recipe.directions_attributes)">remove</button>
+            <button type="button" ng-show="ctrl.recipe.directions_attributes.length > 1" class="btn btn-info btn-xs" data-as-sortable-item-handle>drag me</button>
           </div>
         </div>
 

@@ -1,8 +1,8 @@
 RecipeController.$inject = ["FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
 function RecipeController(FlashService, $state, $stateParams, DataService, ingredients, recipe) {
 
-  var ctrl = this
-  ctrl.ingredients = ingredients.data
+  var ctrl = this;
+  ctrl.ingredients = ingredients.data;
 
   if ($stateParams.id)
     {
@@ -12,32 +12,32 @@ function RecipeController(FlashService, $state, $stateParams, DataService, ingre
   else
     {
       ctrl.recipe = {
-                    title: "",
-                    directions: [{place: 1, content: ""}],
-                    recipe_ingredients: [{place: 1, name: "", quantity_prep: ""}]
-                  }
-    }
+                      title: "",
+                      directions_attributes: [{place: 1, content: ""}],
+                      ingredients_attributes: [{place: 1, name: "", quantity_prep: ""}]
+                    }
+    };
 
   ctrl.setIngredient = function(selectedValue, ingredientEntry){
     if (selectedValue)
     { ingredientEntry.name = selectedValue.name }
     else
     { ingredientEntry.name = "" }
-  }
+  };
 
   ctrl.addStep = function(){
-    var index = ctrl.recipe.directions.length+1
-    ctrl.recipe.directions.push({place: index, content: ""})
-  }
+    var index = ctrl.recipe.directions_attributes.length+1
+    ctrl.recipe.directions_attributes.push({place: index, content: ""})
+  };
 
   ctrl.addIng = function(){
-    var index = ctrl.recipe.recipe_ingredients.length+1
-    ctrl.recipe.recipe_ingredients.push({place: index, name: "", quantity_prep: ""})
-  }
+    var index = ctrl.recipe.ingredients_attributes.length+1
+    ctrl.recipe.ingredients_attributes.push({place: index, name: "", quantity_prep: ""})
+  };
 
   ctrl.removeEntry = function(entry, array){
     array.splice(array.indexOf(entry), 1)
-  }
+  };
 
   ctrl.dragControlListeners = {
     accept: function (sourceItemHandleScope, destSortableScope) {
@@ -48,13 +48,9 @@ function RecipeController(FlashService, $state, $stateParams, DataService, ingre
   };
 
   ctrl.submit = function(){
-    ctrl.recipe.recipe_ingredients.forEach(function(i){i.place = (ctrl.recipe.recipe_ingredients.indexOf(i)+1)});
-    ctrl.recipe.ingredients_attributes=ctrl.recipe.recipe_ingredients
-    ctrl.recipe.directions.forEach(function(i){i.place = (ctrl.recipe.directions.indexOf(i)+1)});
-    ctrl.recipe.directions_attributes = ctrl.recipe.directions
-    delete ctrl.recipe.directions
-    delete ctrl.recipe.recipe_ingredients
-
+    ctrl.recipe.ingredients_attributes.forEach(function(i)
+      { i.place = (ctrl.recipe.ingredients_attributes.indexOf(i)+1) });
+    ctrl.recipe.directions_attributes.forEach(function(i){i.place = (ctrl.recipe.directions_attributes.indexOf(i)+1)});
     if (!ctrl.recipe.id) {
         DataService.postRecipe(ctrl.recipe)
         .then(function(result){
@@ -80,7 +76,7 @@ function RecipeController(FlashService, $state, $stateParams, DataService, ingre
         FlashService.flashDelete();
       })
     }
-  }
+  };
 
 }
 angular
