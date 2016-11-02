@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'angular-rails-templates'
 gem 'active_model_serializers'
 gem 'pry'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
