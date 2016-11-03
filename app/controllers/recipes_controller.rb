@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  
+
   def index
     @recipes = Recipe.all
     render json: @recipes
@@ -29,7 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, ingredients_attributes:
+    params.require(:recipe).permit(:title, :user_id, ingredients_attributes:
     [:place, :name, :quantity_prep], directions_attributes: [:place, :content])
   end
 

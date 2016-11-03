@@ -1,8 +1,8 @@
-{{ user.username }}
 <form name="recipeForm" ng-submit="recipeForm.$valid && ctrl.submit()" novalidate>
 
   <div ng-show="ctrl.display">
     <h4 class= "text-center"> {{ctrl.recipe.title}}</h4>
+    <p> submitted by: {{ ctrl.recipe.user.username }} </p>
   </div>
 
   <div ng-hide="ctrl.display">
@@ -137,7 +137,9 @@
             class="btn btn-primary"
             type="submit"
             value="submit">
-    <button type="button" ng-show="ctrl.recipe.id && ctrl.display" ng-click="ctrl.display=false" class="btn btn-secondary">Edit</button>
-    <button type="button" ng-show="ctrl.recipe.id" ng-click="ctrl.deleteRecipe()" class="btn btn-danger">Delete</button>
+
+      <button type="button" ng-show="signedIn() && ctrl.recipe.id && ctrl.display" ng-click="ctrl.display=false" class="btn btn-secondary">Edit</button>
+      <button type="button" ng-show="ctrl.recipe.id" ng-click="ctrl.deleteRecipe()" class="btn btn-danger">Delete</button>
+
   </div>
 </form>

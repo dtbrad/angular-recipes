@@ -1,13 +1,19 @@
-RecipeController.$inject = ["FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
-function RecipeController(FlashService, $state, $stateParams, DataService, ingredients, recipe) {
+RecipeController.$inject = ["$scope", "Auth", "FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
+function RecipeController($scope, Auth, FlashService, $state, $stateParams, DataService, ingredients, recipe) {
 
   var ctrl = this;
+
+  Auth.currentUser().then(function (user){
+    ctrl.user = user;
+  });
+
   ctrl.ingredients = ingredients.data;
 
   if ($stateParams.id)
     {
       ctrl.recipe = recipe.data
       ctrl.display = true
+      debugger;
     }
   else
     {
@@ -51,6 +57,7 @@ function RecipeController(FlashService, $state, $stateParams, DataService, ingre
     ctrl.recipe.ingredients_attributes.forEach(function(i)
       { i.place = (ctrl.recipe.ingredients_attributes.indexOf(i)+1) });
     ctrl.recipe.directions_attributes.forEach(function(i){i.place = (ctrl.recipe.directions_attributes.indexOf(i)+1)});
+    ctrl.recipe.user_id = ctrl.user.id
     if (!ctrl.recipe.id) {
         DataService.postRecipe(ctrl.recipe)
         .then(function(result){
