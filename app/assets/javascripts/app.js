@@ -22,18 +22,23 @@ angular
       controller: 'AuthController'
     })
     .state('home.newRecipe', {
-      url:'recipes/new',
-      controller: 'RecipeController as ctrl',
-      templateUrl: 'app/views/recipe.html',
-      resolve: {
-        ingredients: ["DataService", function (DataService) {
-          return DataService.getIngredients();
-        }],
-        recipe: ["$stateParams", "DataService", function ($stateParams, DataService) {
-          return ""
-        }]
-      }
-    })
+    url:'recipes/new',
+    controller: 'RecipeController as ctrl',
+    onEnter: ['$state', 'Auth', 'FlashService', function($state, Auth, FlashService) {
+      if ( !Auth.isAuthenticated() )
+      {
+        $state.go('home.login'); FlashService.flashDeny(); }
+    }],
+    templateUrl: 'app/views/recipe.html',
+    resolve: {
+      ingredients: ["DataService", function (DataService) {
+        return DataService.getIngredients();
+      }],
+      recipe: ["$stateParams", "DataService", function ($stateParams, DataService) {
+        return ""
+      }]
+    }
+  })
     .state('home.recipes', {
       url:'recipes',
       controller: 'RecipesController as ctrl',

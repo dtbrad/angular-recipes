@@ -13,7 +13,6 @@ function RecipeController($scope, Auth, FlashService, $state, $stateParams, Data
     {
       ctrl.recipe = recipe.data
       ctrl.display = true
-      debugger;
     }
   else
     {

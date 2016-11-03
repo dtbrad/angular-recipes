@@ -16,6 +16,11 @@ function FlashService(Flash) {
     var message = 'Recipe deleted';
     var id = Flash.create('warning', message, 3000, {class: 'custom-class', id: 'custom-id'}, true);
   }
+
+  this.flashDeny = function(){
+    var message = 'Log in to create and edit recipes';
+    var id = Flash.create('warning', message, 3000, {class: 'custom-class', id: 'custom-id'}, true);
+  }
 }
 
 angular
