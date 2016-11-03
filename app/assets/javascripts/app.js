@@ -10,6 +10,16 @@ angular
       url:'welcome',
       templateUrl: 'app/views/welcome.html'
     })
+    .state('home.login', {
+      url: 'login',
+      controller: 'AuthController',
+      templateUrl: 'app/views/auth/_login.html'
+    })
+    .state('home.register', {
+      url: 'register',
+      templateUrl: 'app/views/auth/_register.html',
+      controller: 'AuthController'
+    })
     .state('home.newRecipe', {
       url:'recipes/new',
       controller: 'RecipeController as ctrl',
