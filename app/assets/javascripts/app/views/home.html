@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
       <div class="navbar-header">
           <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
 					<span class="sr-only">Toggle navigation</span>
@@ -12,10 +12,16 @@
 			</div>
 
       <div class="collapse navbar-collapse" ng-class="{collapse: isCollapsed}" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-left">
+          <li ng-show="signedIn()"><a href="#/">Signed in as: {{ user.username }}</a></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#" ui-sref="home.welcome" ui-sref-active="active">About <span class="sr-only">(current)</span></a></li>
           <li><a href="#" ui-sref="home.recipes" ui-sref-active="active">Recipes Index <span class="sr-only">(current)</span></a></li>
-          <li><a href="#" ui-sref="home.newRecipe" ui-sref-active="active">Create a New Recipe <span class="sr-only">(current)</span></a></li>
+          <li ng-show="signedIn()"><a href="#" ui-sref="home.newRecipe" ui-sref-active="active">New Recipe <span class="sr-only">(current)</span></a></li>
+          <li ng-hide="signedIn()"><a href="#/login">Log In</a></li>
+          <li ng-hide="signedIn()"><a href="#/register">Register</a></li>
+          <li ng-show="signedIn()"><a href="#" ng-click="logout()">Log Out</a></li>
         </ul>
       </div>
     </div>

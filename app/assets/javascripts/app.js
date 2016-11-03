@@ -4,6 +4,7 @@ angular
   $stateProvider
     .state('home', {
       url:'/',
+      controller: 'HomeController as ctrl',
       templateUrl: 'app/views/home.html'
     })
     .state('home.welcome', {
