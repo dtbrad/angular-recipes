@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
   end
 
   def update
-    if @recipe.user === current_user
+    if @recipe.user == current_user
       @recipe.update(recipe_params)
       @recipe.save
     end
@@ -26,20 +26,20 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    if @recipe.user === current_user
-      @recipe.destroy
-    end
+    @recipe.destroy if @recipe.user == current_user
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, ingredients_attributes:
-    [:place, :name, :quantity_prep], directions_attributes: [:place, :content])
+    params.require(:recipe).permit(
+      :title,
+      ingredients_attributes: [:id, :place, :name, :quantity_prep],
+      directions_attributes: [:id, :place, :content]
+    )
   end
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
-
 end
