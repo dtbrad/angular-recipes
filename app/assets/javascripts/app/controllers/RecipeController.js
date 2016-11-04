@@ -61,14 +61,14 @@ function RecipeController($scope, Auth, FlashService, $state, $stateParams, Data
         DataService.postRecipe(ctrl.recipe)
         .then(function(result){
           $state.go('home.recipe', {id: result.data.id});
-          FlashService.flashCreate();
+          FlashService.flashAlert('success', 'Recipe created', 3000);
         });
       }
     else {
       DataService.updateRecipe(ctrl.recipe)
       .then(function(result){
         $state.go($state.$current, null, { reload: true });
-        FlashService.flashUpdate();
+        FlashService.flashAlert('success', 'Recipe updated', 3000);
       });
     }
   };
@@ -79,7 +79,7 @@ function RecipeController($scope, Auth, FlashService, $state, $stateParams, Data
       DataService.deleteRecipe(ctrl.recipe.id)
       .then(function(result){
         $state.go('home.recipes');
-        FlashService.flashDelete();
+        FlashService.flashAlert('danger', 'Recipe deleted', 3000);
       })
     }
   };

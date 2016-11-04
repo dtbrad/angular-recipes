@@ -27,7 +27,7 @@ angular
     onEnter: ['$state', 'Auth', 'FlashService', function($state, Auth, FlashService) {
       if ( !Auth.isAuthenticated() )
       {
-        $state.go('home.login'); FlashService.flashDeny(); }
+        $state.go('home.login'); FlashService.flashAlert('danger', 'Log in to create and edit recipes'); }
     }],
     templateUrl: 'app/views/recipe.html',
     resolve: {
