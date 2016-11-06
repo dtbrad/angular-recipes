@@ -1,18 +1,13 @@
-RecipeController.$inject = ["$scope", "Auth", "FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
-function RecipeController($scope, Auth, FlashService, $state, $stateParams, DataService, ingredients, recipe) {
+RecipeController.$inject = ["$scope", "Auth", "FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe", "display"];
+function RecipeController($scope, Auth, FlashService, $state, $stateParams, DataService, ingredients, recipe, display) {
 
   var ctrl = this;
-
-  Auth.currentUser().then(function (user){
-    ctrl.user = user;
-  });
-
+  ctrl.display = display
   ctrl.ingredients = ingredients.data;
 
   if ($stateParams.id)
     {
       ctrl.recipe = recipe.data
-      ctrl.display = true
     }
   else
     {
