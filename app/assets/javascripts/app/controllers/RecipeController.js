@@ -1,19 +1,16 @@
-RecipeController.$inject = ["$scope", "Auth", "FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe"];
-function RecipeController($scope, Auth, FlashService, $state, $stateParams, DataService, ingredients, recipe) {
+RecipeController.$inject = ["$scope", "Auth", "FlashService", "$state", "$stateParams", "DataService", "ingredients", "recipe", "display"];
+function RecipeController($scope, Auth, FlashService, $state, $stateParams, DataService, ingredients, recipe, display) {
 
   var ctrl = this;
-
+  ctrl.display = display
+  ctrl.ingredients = ingredients.data;
   Auth.currentUser().then(function (user){
     ctrl.user = user;
   });
 
-  ctrl.ingredients = ingredients.data;
-
   if ($stateParams.id)
     {
       ctrl.recipe = recipe.data
-      ctrl.display = true
-      debugger;
     }
   else
     {
@@ -62,14 +59,14 @@ function RecipeController($scope, Auth, FlashService, $state, $stateParams, Data
         DataService.postRecipe(ctrl.recipe)
         .then(function(result){
           $state.go('home.recipe', {id: result.data.id});
-          FlashService.flashCreate();
+          FlashService.flashAlert('success', 'Recipe created', 3000);
         });
       }
     else {
       DataService.updateRecipe(ctrl.recipe)
       .then(function(result){
-        $state.go($state.$current, null, { reload: true });
-        FlashService.flashUpdate();
+        $state.go('home.recipe', {id: result.data.id});
+        FlashService.flashAlert('success', 'Recipe updated', 3000);
       });
     }
   };
@@ -80,7 +77,7 @@ function RecipeController($scope, Auth, FlashService, $state, $stateParams, Data
       DataService.deleteRecipe(ctrl.recipe.id)
       .then(function(result){
         $state.go('home.recipes');
-        FlashService.flashDelete();
+        FlashService.flashAlert('danger', 'Recipe deleted', 3000);
       })
     }
   };

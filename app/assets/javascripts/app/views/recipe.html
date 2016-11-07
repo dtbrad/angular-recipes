@@ -137,9 +137,9 @@
             class="btn btn-primary"
             type="submit"
             value="submit">
-
-      <button type="button" ng-show="signedIn() && ctrl.recipe.id && ctrl.display" ng-click="ctrl.display=false" class="btn btn-secondary">Edit</button>
+    <span ng-if="ctrl.recipe.user.id == user.id">
+      <a type="button" ng-show="signedIn() && ctrl.recipe.id && ctrl.display" ui-sref="home.editRecipe({id: ctrl.recipe.id})" class="btn btn-primary">Edit</a>
       <button type="button" ng-show="ctrl.recipe.id" ng-click="ctrl.deleteRecipe()" class="btn btn-danger">Delete</button>
-
+    </span>
   </div>
 </form>
