@@ -8,7 +8,7 @@
 <h5 ng-show="ctrl.recipes.length == 0" class="text-center">There are no recipes in the database</h5>
 <br>
 
-<div ng-repeat="recipe in ctrl.recipes | filter: ctrl.search">
+<div ng-repeat="recipe in ctrl.recipes | filter: { ingredients: ctrl.search }">
   <a ui-sref="home.recipe({id: recipe.id})" class="list-group-item">
     {{recipe.title}}
   </a>
